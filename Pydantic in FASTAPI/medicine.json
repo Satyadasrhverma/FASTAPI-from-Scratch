@@ -1,0 +1,56 @@
+{
+  "M001": {
+    "item_name": "Paracetamol",
+    "category": "Painkiller",
+    "stock_quantity": 500,
+    "price_per_unit": 2.5,
+    "expiry_date": "2027-05-20",
+    "supplier": "HealthPharma",
+    "status": "In Stock"
+  },
+  "M002": {
+    "item_name": "Amoxicillin",
+    "category": "Antibiotic",
+    "stock_quantity": 45,
+    "price_per_unit": 12.0,
+    "expiry_date": "2025-12-15",
+    "supplier": "Biocure Labs",
+    "status": "Low Stock"
+  },
+  "M003": {
+    "item_name": "Cetirizine",
+    "category": "Antihistamine",
+    "stock_quantity": 0,
+    "price_per_unit": 5.75,
+    "expiry_date": "2026-08-10",
+    "supplier": "Wellness Ltd",
+    "status": "Out of Stock"
+  },
+  "M004": {
+    "item_name": "Metformin",
+    "category": "Antidiabetic",
+    "stock_quantity": 210,
+    "price_per_unit": 8.5,
+    "expiry_date": "2028-01-30",
+    "supplier": "Global Meds",
+    "status": "In Stock"
+  },
+  "M005": {
+    "item_name": "Atorvastatin",
+    "category": "Cholesterol",
+    "stock_quantity": 120,
+    "price_per_unit": 15.2,
+    "expiry_date": "2026-11-05",
+    "supplier": "HeartCare Co",
+    "status": "In Stock"
+  },
+  "M006": {
+    "item_name": "Ibuprofen",
+    "category": "Anti-inflammatory",
+    "stock_quantity": 15,
+    "price_per_unit": 4.0,
+    "expiry_date": "2025-09-22",
+    "supplier": "HealthPharma",
+    "status": "Low Stock"
+  }
+}
