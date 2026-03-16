@@ -1,8 +1,8 @@
-from fastapi import APIRouter , Depends
+from fastapi import APIRouter , Depends , HTTPException
 from sqlalchemy.orm import Session
 
-import database, models
-from auth import hash_pass
+import database, models, crud
+from auth import hash_pass , verify_pass
 
 router = APIRouter()
 
@@ -27,4 +27,17 @@ def register(username:str, password : str, db:Session = Depends(get_db)):
      db.commit()
 
      return{"messages" : "user_created"}
+
+@router.post("/login")
+def login(usermame:str, password:str, db:Session = Depends(get_db)):
+    user = crud.get_user(db, usermame)
+
+   
+    if not user:
+        raise HTTPException(status_code=404, detail="user npt founf")
+    if not verify_pass(password , user.password):
+        raise HTTPException(status_code= 401, detail="incoorect pass")
+    return {"message" : "login succesfull"}
+
+
 
