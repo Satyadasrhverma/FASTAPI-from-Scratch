@@ -2,7 +2,7 @@ from fastapi import APIRouter , Depends , HTTPException
 from sqlalchemy.orm import Session
 
 import database, models, crud
-from auth import hash_pass , verify_pass
+from auth import hash_pass , verify_pass, create_access_token
 
 router = APIRouter()
 
@@ -28,16 +28,23 @@ def register(username:str, password : str, db:Session = Depends(get_db)):
 
      return{"messages" : "user_created"}
 
+
+
+
 @router.post("/login")
-def login(usermame:str, password:str, db:Session = Depends(get_db)):
-    user = crud.get_user(db, usermame)
+def login(username: str, password: str, db: Session = Depends(get_db)):
 
-   
+    user = crud.get_user(db, username)
+
     if not user:
-        raise HTTPException(status_code=404, detail="user npt founf")
-    if not verify_pass(password , user.password):
-        raise HTTPException(status_code= 401, detail="incoorect pass")
-    return {"message" : "login succesfull"}
+        raise HTTPException(status_code=404, detail="User not found")
 
+    if not verify_pass(password, user.password):
+        raise HTTPException(status_code=401, detail="Incorrect password")
 
+    token = create_access_token({"sub": user.username})
 
+    return {
+        "access_token": token,
+        "token_type": "bearer"
+    }
